@@ -26,7 +26,7 @@
 
         .container {
             width: 100%;
-            max-width: 480px; /* 手機版型最佳化 */
+            max-width: 480px;
             background: var(--white);
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             overflow: hidden;
@@ -34,7 +34,6 @@
             flex-direction: column;
         }
 
-        /* Header 區域 */
         header {
             background-image: linear-gradient(135deg, var(--primary-color), #0a9396);
             color: var(--white);
@@ -57,7 +56,6 @@
             opacity: 0.9;
         }
 
-        /* 倒數計時器 */
         .countdown-box {
             background: var(--white);
             margin: -20px 20px 20px 20px;
@@ -86,7 +84,6 @@
             color: #666;
         }
 
-        /* 內容卡片 */
         .card {
             padding: 20px;
             margin: 10px 20px;
@@ -138,7 +135,6 @@
             color: #856404;
         }
 
-        /* 按鈕區域 */
         .actions {
             margin-top: auto;
             padding: 20px;
@@ -165,15 +161,25 @@
             transform: scale(0.98);
         }
 
-        .btn-map {
+        .btn-map-google {
             background-color: var(--primary-color);
             color: var(--white);
         }
 
-        .btn-cal {
+        .btn-map-apple {
+            background-color: #007AFF; /* Apple 藍 */
+            color: var(--white);
+        }
+
+        .btn-cal-google {
             background-color: var(--white);
             color: var(--primary-color);
             border: 2px solid var(--primary-color);
+        }
+
+        .btn-cal-apple {
+            background-color: #FF2D55; /* Apple 粉紅 */
+            color: var(--white);
         }
 
         footer {
@@ -182,7 +188,6 @@
             font-size: 12px;
             color: #999;
         }
-
     </style>
 </head>
 <body>
@@ -239,12 +244,20 @@
         </div>
 
         <div class="actions">
-            <a href="https://www.google.com/maps/search/?api=1&query=Big+Pier+大碼頭美式手抓海鮮餐廳+華泰名品城" target="_blank" class="btn btn-map">
-                🗺️ 導航至餐廳
+            <!-- 地圖選擇 -->
+            <a href="https://www.google.com/maps/search/?api=1&query=Big+Pier+大碼頭美式手抓海鮮餐廳+華泰名品城" target="_blank" class="btn btn-map-google">
+                🗺️ 用 Google 地圖導航
             </a>
-            
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Big+Pier+大碼頭海鮮餐敘&dates=20251219T090000Z/20251219T110000Z&details=從華漾DIM+SUM旁邊的手扶梯上來即可看見。&location=Big+Pier+大碼頭美式手抓海鮮餐廳" target="_blank" class="btn btn-cal">
+            <a href="http://maps.apple.com/?q=Big+Pier+大碼頭美式手抓海鮮餐廳+華泰名品城" target="_blank" class="btn btn-map-apple">
+                🗺️ 用 iPhone 內建地圖導航
+            </a>
+
+            <!-- 行事曆選擇 -->
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Big+Pier+大碼頭海鮮餐敘&dates=20251219T090000Z/20251219T110000Z&details=從華漾DIM+SUM旁邊的手扶梯上來即可看見。&location=Big+Pier+大碼頭美式手抓海鮮餐廳" target="_blank" class="btn btn-cal-google">
                 📅 加入 Google 行事曆
+            </a>
+            <a href="calshow:2025-12-19 17:00:00" onclick="event.preventDefault(); alert('iPhone 內建行事曆已自動顯示此時間點，請手動新增事件：\n\n活動：Big Pier 海鮮餐敘\n時間：2025/12/19 17:00\n地點：華泰名品城 Big Pier 大碼頭\n小提示：從華漾 DIM SUM 旁手扶梯上樓');" class="btn btn-cal-apple">
+                📅 用 iPhone 內建行事曆加入
             </a>
         </div>
 
@@ -254,7 +267,7 @@
     </div>
 
     <script>
-        // 設定目標日期：2025/12/19 17:00:00
+        // 倒數計時器
         const targetDate = new Date('December 19, 2025 17:00:00').getTime();
 
         function updateCountdown() {
@@ -278,7 +291,7 @@
         }
 
         setInterval(updateCountdown, 1000);
-        updateCountdown(); // 初始化執行一次
+        updateCountdown();
     </script>
 
 </body>

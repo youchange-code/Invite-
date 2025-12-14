@@ -7,7 +7,7 @@
     <style>
         :root {
             --primary-color: #005f73; /* 海洋深藍 */
-            --accent-color: #ee9b00;  /* 像螃蟹/海鮮的暖橘色 */
+            --accent-color: #ee9b00;  /* 螃蟹橘 */
             --bg-color: #e0fbfc;      /* 淺藍背景 */
             --text-color: #2b2d42;
             --white: #ffffff;
@@ -177,7 +177,7 @@
             border: 2px solid var(--primary-color);
         }
 
-        .btn-cal-apple {
+        .btn-cal-ics {
             background-color: #FF2D55; /* Apple 粉紅 */
             color: var(--white);
         }
@@ -256,7 +256,9 @@
             <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Big+Pier+大碼頭海鮮餐敘&dates=20251219T090000Z/20251219T110000Z&details=從華漾DIM+SUM旁邊的手扶梯上來即可看見。&location=Big+Pier+大碼頭美式手抓海鮮餐廳" target="_blank" class="btn btn-cal-google">
                 📅 加入 Google 行事曆
             </a>
-            <a href="calshow:2025-12-19 17:00:00" onclick="event.preventDefault(); alert('iPhone 內建行事曆已自動顯示此時間點，請手動新增事件：\n\n活動：Big Pier 海鮮餐敘\n時間：2025/12/19 17:00\n地點：華泰名品城 Big Pier 大碼頭\n小提示：從華漾 DIM SUM 旁手扶梯上樓');" class="btn btn-cal-apple">
+
+            <!-- iPhone 內建行事曆：下載 .ics 檔案（最佳體驗） -->
+            <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20251219T170000%0ADTEND:20251219T190000%0ASUMMARY:Big Pier 海鮮餐敘%0ADESCRIPTION:從華漾 DIM SUM 旁邊的手扶梯上樓即可看見。%0ALOCATION:Big Pier 大碼頭美式手抓海鮮餐廳 華泰名品城 606室 (320桃園市中壢區春德路189號)%0ABEGIN:VALARM%0ATRIGGER:-PT60M%0AACTION:DISPLAY%0ADESCRIPTION:Big Pier 海鮮餐敘即將開始！%0AEND:VALARM%0AEND:VEVENT%0AEND:VCALENDAR" download="BigPier海鮮餐敘.ics" class="btn btn-cal-ics">
                 📅 用 iPhone 內建行事曆加入
             </a>
         </div>
@@ -267,7 +269,7 @@
     </div>
 
     <script>
-        // 倒數計時器
+        // 倒數計時器：目標 2025/12/19 17:00:00
         const targetDate = new Date('December 19, 2025 17:00:00').getTime();
 
         function updateCountdown() {
@@ -291,7 +293,7 @@
         }
 
         setInterval(updateCountdown, 1000);
-        updateCountdown();
+        updateCountdown(); // 初始執行
     </script>
 
 </body>

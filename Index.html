@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Pier 海鮮餐敘邀請</title>
+    <style>
+        :root {
+            --primary-color: #005f73; /* 海洋深藍 */
+            --accent-color: #ee9b00;  /* 像螃蟹/海鮮的暖橘色 */
+            --bg-color: #e0fbfc;      /* 淺藍背景 */
+            --text-color: #2b2d42;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px; /* 手機版型最佳化 */
+            background: var(--white);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header 區域 */
+        header {
+            background-image: linear-gradient(135deg, var(--primary-color), #0a9396);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .sub-title {
+            margin-top: 10px;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* 倒數計時器 */
+        .countdown-box {
+            background: var(--white);
+            margin: -20px 20px 20px 20px;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .time-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .number {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .label {
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* 內容卡片 */
+        .card {
+            padding: 20px;
+            margin: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid #eee;
+        }
+
+        .info-row {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .icon {
+            margin-right: 12px;
+            font-size: 20px;
+        }
+
+        .info-content strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 16px;
+        }
+
+        .info-content p {
+            margin: 0;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .highlight-box {
+            background-color: #fff3cd;
+            border-left: 5px solid var(--accent-color);
+            padding: 15px;
+            margin: 10px 20px;
+            border-radius: 4px;
+        }
+
+        .highlight-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .highlight-text {
+            font-size: 14px;
+            color: #856404;
+        }
+
+        /* 按鈕區域 */
+        .actions {
+            margin-top: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px 0;
+            text-align: center;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s;
+            border: none;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-map {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-cal {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #999;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🦞 Big Pier 海鮮餐敘</h1>
+            <div class="sub-title">2025年12月19日 (五) 17:00</div>
+        </header>
+
+        <div class="countdown-box" id="countdown">
+            <div class="time-unit">
+                <span class="number" id="days">0</span>
+                <span class="label">天</span>
+            </div>
+            <div class="time-unit">
+                <span class="number" id="hours">0</span>
+                <span class="label">時</span>
+            </div>
+            <div class="time-unit">
+                <span class="number" id="minutes">0</span>
+                <span class="label">分</span>
+            </div>
+            <div class="time-unit">
+                <span class="number" id="seconds">0</span>
+                <span class="label">秒</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="info-row">
+                <div class="icon">📍</div>
+                <div class="info-content">
+                    <strong>餐廳地點</strong>
+                    <p>Big Pier 大碼頭美式手抓海鮮餐廳</p>
+                    <p style="font-size: 12px; margin-top: 5px; color: #888;">華泰名品城 606室 (320桃園市中壢區春德路189號)</p>
+                </div>
+            </div>
+            
+            <div class="info-row">
+                <div class="icon">🅿️</div>
+                <div class="info-content">
+                    <strong>停車與路線指引</strong>
+                    <p>鄰近入口進入，建議停放於華泰名品城停車場。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <span class="highlight-title">💡 快速抵達密技</span>
+            <div class="highlight-text">
+                請尋找 <strong>「華漾 DIM SUM」</strong>，搭乘旁邊的手扶梯上樓，即可看見大碼頭餐廳！
+            </div>
+        </div>
+
+        <div class="actions">
+            <a href="https://www.google.com/maps/search/?api=1&query=Big+Pier+大碼頭美式手抓海鮮餐廳+華泰名品城" target="_blank" class="btn btn-map">
+                🗺️ 導航至餐廳
+            </a>
+            
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Big+Pier+大碼頭海鮮餐敘&dates=20251219T090000Z/20251219T110000Z&details=從華漾DIM+SUM旁邊的手扶梯上來即可看見。&location=Big+Pier+大碼頭美式手抓海鮮餐廳" target="_blank" class="btn btn-cal">
+                📅 加入 Google 行事曆
+            </a>
+        </div>
+
+        <footer>
+            期待與您相見！
+        </footer>
+    </div>
+
+    <script>
+        // 設定目標日期：2025/12/19 17:00:00
+        const targetDate = new Date('December 19, 2025 17:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "<h3 style='margin:0; color:var(--accent-color)'>活動已開始！</h3>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // 初始化執行一次
+    </script>
+
+</body>
+</html>
